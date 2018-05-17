@@ -14,7 +14,7 @@ defmodule ExIMDbSniffer.People do
   def get_from_response(response) do
     overview =
       response.body
-      |> get_overview_elem
+      |> get_overview_elem()
 
     name = get_name(overview)
 
@@ -38,14 +38,14 @@ defmodule ExIMDbSniffer.People do
 
   defp get_name(overview) do
     overview
-    |> Floki.find("[itemprop=name]")
+    |> Floki.find(".header .itemprop")
     |> Floki.text()
   end
 
   defp get_birth_date(body) do
     body
     |> Floki.find("#name-born-info")
-    |> Floki.find("[itemprop=birthDate]")
+    |> Floki.find("time")
     |> Floki.attribute("datetime")
     |> List.first()
   end

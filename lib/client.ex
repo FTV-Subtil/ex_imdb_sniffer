@@ -9,7 +9,7 @@ defmodule ExIMDbSniffer.Client do
 
   def process_url(url, options) do
     (@endpoint <> url)
-    |> prepend_protocol
+    |> prepend_protocol()
     |> append_query_string(options)
   end
 
