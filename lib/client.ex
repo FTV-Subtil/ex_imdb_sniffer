@@ -32,5 +32,4 @@ defmodule ExIMDbSniffer.Client do
   def process_request_headers(headers) do
     Keyword.put(headers, :Accept, "application/json")
   end
-
 end
