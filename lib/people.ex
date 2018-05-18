@@ -12,16 +12,22 @@ defmodule ExIMDbSniffer.People do
   ]
 
   def get_from_response(response) do
-    overview =
+    {_, _, json_ld} =
       response.body
-      |> get_overview_elem()
+      |> Floki.find("script")
+      |> Enum.filter(fn element ->
+        "application/ld+json" in Floki.attribute(element, "type")
+      end)
+      |> List.first()
 
-    name = get_name(overview)
+    person = json_ld |> Poison.decode!()
 
-    birth_date = get_birth_date(response.body)
+    name = Map.get(person, "name")
+    birth_date = Map.get(person, "birthDate")
+
     birth_location = get_birth_location(response.body)
 
-    picture_url = get_picture_url(overview)
+    picture_url = Map.get(person, "image")
 
     %ExIMDbSniffer.People{
       birth_date: birth_date,
@@ -31,35 +37,9 @@ defmodule ExIMDbSniffer.People do
     }
   end
 
-  defp get_overview_elem(body) do
-    body
-    |> Floki.find("#name-overview-widget")
-  end
-
-  defp get_name(overview) do
-    overview
-    |> Floki.find(".header .itemprop")
-    |> Floki.text()
-  end
-
-  defp get_birth_date(body) do
-    body
-    |> Floki.find("#name-born-info")
-    |> Floki.find("time")
-    |> Floki.attribute("datetime")
-    |> List.first()
-  end
-
   defp get_birth_location(body) do
     body
     |> Floki.find("#name-born-info>a")
     |> Floki.text()
-  end
-
-  defp get_picture_url(overview) do
-    overview
-    |> Floki.find("#name-poster")
-    |> Floki.attribute("src")
-    |> List.first()
   end
 end
