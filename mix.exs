@@ -8,7 +8,7 @@ defmodule ExIMDbSniffer.MixProject do
       elixir: "~> 1.6",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      name: "ExIMDbSniffer"
+      name: "ExIMDbSniffer",
       package: package(),
       description: description(),
       source_url: "https://github.com/FTV-Subtil/ex_imdb_sniffer",
