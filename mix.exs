@@ -9,6 +9,14 @@ defmodule ExIMDbSniffer.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       name: "ExIMDbSniffer"
+      package: package(),
+      description: description(),
+      source_url: "https://github.com/FTV-Subtil/ex_imdb_sniffer",
+      homepage_url: "https://github.com/FTV-Subtil/ex_imdb_sniffer",
+      docs: [
+        main: "ExIMDbSniffer",
+        extras: ["README.md"]
+      ]
     ]
   end
 
@@ -26,6 +34,23 @@ defmodule ExIMDbSniffer.MixProject do
       {:poison, "~> 3.1"},
       {:floki, "0.20.2"},
       {:ex_doc, "~> 0.18", only: :dev, runtime: false}
+    ]
+  end
+
+  defp description() do
+    "IMDb connection to get some information about personnalities."
+  end
+
+  defp package() do
+    [
+      name: "ex_imdb_sniffer",
+      files: ["lib", "mix.exs", "README*", "LICENSE*"],
+      maintainers: [
+        "Marc-Antoine Arnaud",
+        "Valentin Noël"
+      ],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/FTV-Subtil/ex_imdb_sniffer"}
     ]
   end
 end

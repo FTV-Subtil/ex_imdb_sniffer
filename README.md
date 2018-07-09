@@ -1,6 +1,6 @@
 # ExIMDbSniffer
 
-**TODO: Add description**
+IMDb connection to get some information about personnalities.
 
 ## Installation
 
