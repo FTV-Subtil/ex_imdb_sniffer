@@ -31,8 +31,8 @@ defmodule ExIMDbSniffer.MixProject do
   defp deps do
     [
       {:httpotion, "~> 3.1"},
-      {:poison, "~> 3.1"},
-      {:floki, "0.20.2"},
+      {:jason, "~> 1.1"},
+      {:floki, "~> 0.21"},
       {:ex_doc, "~> 0.18", only: :dev, runtime: false}
     ]
   end

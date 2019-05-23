@@ -20,7 +20,7 @@ defmodule ExIMDbSniffer.People do
       end)
       |> List.first()
 
-    person = json_ld |> Poison.decode!()
+    person = json_ld |> Jason.decode!()
 
     name = Map.get(person, "name")
     birth_date = Map.get(person, "birthDate")
