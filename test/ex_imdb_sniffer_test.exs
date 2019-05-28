@@ -10,7 +10,8 @@ defmodule ExIMDbSnifferTest do
              birth_location: "Newmarket, Ontario, Canada",
              name: "Jim Carrey",
              picture_url:
-               "https://m.media-amazon.com/images/M/MV5BMTQwMjAwNzI0M15BMl5BanBnXkFtZTcwOTY1MTMyOQ@@._V1_.jpg"
+               "https://m.media-amazon.com/images/M/MV5BMTQwMjAwNzI0M15BMl5BanBnXkFtZTcwOTY1MTMyOQ@@._V1_.jpg",
+             job_titles: ["Actor", "Writer", "Producer"]
            }
   end
 end

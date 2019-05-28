@@ -8,7 +8,8 @@ defmodule ExIMDbSniffer.People do
     :name,
     :birth_date,
     :birth_location,
-    :picture_url
+    :picture_url,
+    :job_titles
   ]
 
   def get_from_response(response) do
@@ -28,12 +29,14 @@ defmodule ExIMDbSniffer.People do
     birth_location = get_birth_location(response.body)
 
     picture_url = Map.get(person, "image")
+    job_title = Map.get(person, "jobTitle")
 
     %ExIMDbSniffer.People{
       birth_date: birth_date,
       birth_location: birth_location,
       name: name,
-      picture_url: picture_url
+      picture_url: picture_url,
+      job_titles: job_title
     }
   end
 
